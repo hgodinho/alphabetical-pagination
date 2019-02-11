@@ -89,7 +89,7 @@ if (!class_exists('WP_Glossary_Bootstrap')) {
                 return $post_id;
             }
             //check location
-            if (!in_array($_POST['post_type'], $this->post_types)) {
+            if (!in_array($_POST['post_type'], $post->post_types)) {
                 return $post_id;
             }
             // Check permissions
