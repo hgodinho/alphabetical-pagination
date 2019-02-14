@@ -36,7 +36,6 @@ if (!class_exists('WP_Glossary_Bootstrap')) {
          * @param string $slug_rewrite_b
          */
         public function __construct(
-<<<<<<< HEAD
             string $tax_name_a = null,
             string $tax_name_b = null,
             array $post_types_a = array('post'),
@@ -44,7 +43,6 @@ if (!class_exists('WP_Glossary_Bootstrap')) {
             string $slug_rewrite_a = null,
             string $slug_rewrite_b = null) {
             if (!taxonomy_exists($tax_name_a) && $tax_name_a != null) {
-=======
             string $tax_name_a = NULL,
             string $tax_name_b = NULL,
             array $post_types_a = array('post'), 
@@ -54,7 +52,6 @@ if (!class_exists('WP_Glossary_Bootstrap')) {
             bool $show_ui)
         {
             if (!taxonomy_exists( $tax_name_a ) && $tax_name_a != NULL ) {
->>>>>>> 9b2bd99f3dd0ca8e490de411bcf36720e8b67be2
                 register_taxonomy(
                     $tax_name_a,
                     $post_types_a,
