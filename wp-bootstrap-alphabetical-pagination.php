@@ -20,65 +20,73 @@ if (!class_exists('WP_Glossary_Bootstrap')) {
 
     class WP_Glossary_Bootstrap
     {
-        private $post_types_a;
-        private $post_types_b;
-        private $tax_name_a;
-        private $tax_name_b;
+        private $post_types_1;
+        private $post_types_2;
+        private $tax_name_1;
+        private $tax_name_2;
 
         /**
          * Create taxonomies to host the terms a-z
          *
-         * @param string $tax_name_a
-         * @param string $tax_name_b
-         * @param array $post_types_a
-         * @param array $post_types_b
-         * @param string $slug_rewrite_a
-         * @param string $slug_rewrite_b
+         * @param string $tax_name_1
+         * @param string $tax_name_2
+         * @param array $post_types_1
+
+         * @param array $post_types_3
+         * @param string $slug_rewrite_1
+         * @param string $slug_rewrite_2
          */
         public function __construct(
-            string $tax_name_a = null,
-            string $tax_name_b = null,
-            array $post_types_a = array('post'),
-            array $post_types_b = array('post'),
-            string $slug_rewrite_a = null,
-            string $slug_rewrite_b = null) {
-            if (!taxonomy_exists($tax_name_a) && $tax_name_a != null) {
-            string $tax_name_a = NULL,
-            string $tax_name_b = NULL,
-            array $post_types_a = array('post'), 
-            array $post_types_b = array('post'), 
-            string $slug_rewrite_a = NULL, 
-            string $slug_rewrite_b = NULL,
-            bool $show_ui)
-        {
-            if (!taxonomy_exists( $tax_name_a ) && $tax_name_a != NULL ) {
-                register_taxonomy(
-                    $tax_name_a,
-                    $post_types_a,
-                    array(
-                        'public' => true,
-                        'show_ui' => $show_ui,
-                        'rewrite' => array('slug' => $slug_rewrite_a),
-                        'hierarchical' => true,
-                    )
-                );
-                //return $post_types_a;
-                //add_action('save_post', array($this, 'auto_glossary_on_save'));
-            }
+            string $tax_name_1 = null,
+            string $tax_name_2 = null,
+            array $post_types_1 = null,
+            array $post_types_2 = null,
+            string $slug_rewrite_1 = null,
+            string $slug_rewrite_2 = null,
+            bool $show_ui = null) {
+            if (!taxonomy_exists($tax_name_1) && $tax_name_1 != null) {
+                /*
+                string $tax_name_1 = NULL,
+                string $tax_name_2 = NULL,
+                array $post_types_1 = array('post'),
+                array $post_types_2 = array('post'),
+                string $slug_rewrite_1 = NULL,
+                string $slug_rewrite_2 = NULL,
+                bool $show_ui)
+                 */
+                {
+                    if (!taxonomy_exists($tax_name_1) && $tax_name_1 != null) {
+                        register_taxonomy(
+                            $tax_name_1,
+                            $post_types_1
+                            ,
+                            array(
+                                'public' => true,
+                                'show_ui' => $show_ui,
+                                'rewrite' => array('slug' => $slug_rewrite_1),
+                                'hierarchical' => true,
+                            )
+                        );
+                        //return $post_types_1
+                        ;
+                        //add_action('save_post', array($this, 'auto_glossary_on_save'));
+                    }
 
-            if (!taxonomy_exists($tax_name_b) && $tax_name_b != null) {
-                register_taxonomy(
-                    $tax_name_b,
-                    $post_types_b,
-                    array(
-                        'public' => true,
-                        'show_ui' => $show_ui,
-                        'rewrite' => array('slug' => $slug_rewrite_b),
-                        'hierarchical' => true,
-                    )
-                );
-                //return $post_types_b;
-                //add_action('save_post', array($this, 'auto_glossary_on_save'));
+                    if (!taxonomy_exists($tax_name_2) && $tax_name_2 != null) {
+                        register_taxonomy(
+                            $tax_name_2,
+                            $post_types_2,
+                            array(
+                                'public' => true,
+                                'show_ui' => $show_ui,
+                                'rewrite' => array('slug' => $slug_rewrite_2),
+                                'hierarchical' => true,
+                            )
+                        );
+                        //return $post_types_3;
+                        //add_action('save_post', array($this, 'auto_glossary_on_save'));
+                    }
+                }
             }
         }
 
@@ -111,10 +119,10 @@ if (!class_exists('WP_Glossary_Bootstrap')) {
         /**
          * Goes thru all the posts and create term from the firt letter of the post_title
          *
-         * @param string $tax_name_a
+         * @param string $tax_name_1
          * @return void
          */
-        public function recursive_glossary_post_a()
+        public function recursive_glossary_post_1()
         {
             if (!has_term('', 'autor_a_z')) {
                 $taxonomy = 'autor_a_z';
@@ -138,10 +146,10 @@ if (!class_exists('WP_Glossary_Bootstrap')) {
         /**
          * Goes thru all the posts and create terms from the firt letter of the post_title
          *
-         * @param string $tax_name_b
+         * @param string $tax_name_2
          * @return void
          */
-        public function recursive_glossary_post_b()
+        public function recursive_glossary_post_2()
         {
             if (!has_term('', 'obra_a_z')) {
                 $taxonomy = 'obra_a_z';
@@ -165,18 +173,18 @@ if (!class_exists('WP_Glossary_Bootstrap')) {
         /**
          * Create bootstrap alphabetical menu
          *
-         * @param string $tax_name_a
-         * @param string $tax_name_b
+         * @param string $tax_name_1
+         * @param string $tax_name_2
          * @return void
          */
         public function glossary_menu_front_end(
-            string $tax_name_a = null,
-            string $tax_name_b = null) {
+            string $tax_name_1 = null,
+            string $tax_name_2 = null) {
             /**
              * If the taxonomy A parameter is passed then create the alphabetical menu
              */
-            if ($tax_name_a != null) {
-                $terms = get_terms($tax_name_a);
+            if ($tax_name_1 != null) {
+                $terms = get_terms($tax_name_1);
                 $alphabet = array();
                 if ($terms) {
                     foreach ($terms as $term) {
@@ -187,10 +195,10 @@ if (!class_exists('WP_Glossary_Bootstrap')) {
                 <div id="alphabet-menu" class="pagination d-flex justify-content-center">
                     <ul class="pagination d-flex">
                         <?php
-foreach (range('a', 'z') as $i):
-                    $current = ($i == get_query_var($tax_name_a)) ? "current-menu-item" : "menu-item";
+                foreach (range('a', 'z') as $i):
+                    $current = ($i == get_query_var($tax_name_1)) ? "current-menu-item" : "menu-item";
                     if (in_array($i, $alphabet)) {
-                        printf('<li class="page-item az-char %s"><a href="%s" class="page-link">%s</a></li>', $current, get_term_link($i, $tax_name_a), strtoupper($i));
+                        printf('<li class="page-item az-char %s"><a href="%s" class="page-link">%s</a></li>', $current, get_term_link($i, $tax_name_1), strtoupper($i));
                     } else {
                         printf('<li class="page-item az-char %s disabled"><span class="page-link">%s</span></li>', $current, strtoupper($i));
                     }
@@ -204,8 +212,8 @@ foreach (range('a', 'z') as $i):
             /**
              * If the taxonomy B parameter is passed then create the alphabetical menu
              */
-            if ($tax_name_b != null) {
-                $terms = get_terms($tax_name_b);
+            if ($tax_name_2 != null) {
+                $terms = get_terms($tax_name_2);
                 $alphabet = array();
                 if ($terms) {
                     foreach ($terms as $term) {
@@ -213,13 +221,13 @@ foreach (range('a', 'z') as $i):
                     }
                 }
                 ?>
-<div id="alphabet-menu" class="pagination d-flex justify-content-center">
-    <ul class="pagination">
-        <?php
-foreach (range('a', 'z') as $i):
-                    $current = ($i == get_query_var($tax_name_b)) ? "current-menu-item" : "menu-item";
+                <div id="alphabet-menu" class="pagination d-flex justify-content-center">
+                    <ul class="pagination">
+                        <?php
+                foreach (range('a', 'z') as $i):
+                    $current = ($i == get_query_var($tax_name_2)) ? "current-menu-item" : "menu-item";
                     if (in_array($i, $alphabet)) {
-                        printf('<li class="page-item az-char %s"><a href="%s" class="page-link">%s</a></li>', $current, get_term_link($i, $tax_name_b), strtoupper($i));
+                        printf('<li class="page-item az-char %s"><a href="%s" class="page-link">%s</a></li>', $current, get_term_link($i, $tax_name_2), strtoupper($i));
                     } else {
                         printf('<li class="page-item az-char %s disabled"><span class="page-link">%s</span></li>', $current, strtoupper($i));
                     }
