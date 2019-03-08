@@ -175,14 +175,14 @@ if (!class_exists('WP_Glossary_Bootstrap')) {
                     }
                 }
                 ?>
-<div id="alphabet-menu" class="btn-group d-flex justify-content-center mb-4" role="group" aria-label="glossario">
+<div id="alphabet-menu" class="btn-group d-flex justify-content-center" role="group" aria-label="glossario">
     <?php
 foreach (range('a', 'z') as $i):
                     $current = ($i == get_query_var($tax_name_1)) ? "current-menu-item active" : "menu-item";
                     if (in_array($i, $alphabet)) {
-                        printf('<a class="btn btn-outline-secondary ' . $tax_name_1 . ' %s"  href="%s" >%s</a>', $current, get_term_link($i, $tax_name_1), strtoupper($i) );
+                        printf('<a class="btn btn-outline-secondary rounded-0 ' . $tax_name_1 . ' %s"  href="%s" >%s</a>', $current, get_term_link($i, $tax_name_1), strtoupper($i) );
                     } else {
-                        printf('<a class="btn btn-outline-secondary ' . $tax_name_1 . ' %s disabled" tabindex="-1" aria-disabled="true">%s</a>', $current, strtoupper($i) );
+                        printf('<a class="btn btn-outline-secondary rounded-0 ' . $tax_name_1 . ' %s disabled" tabindex="-1" aria-disabled="true">%s</a>', $current, strtoupper($i) );
                     }
                 endforeach;
                 ?>
@@ -202,14 +202,14 @@ foreach (range('a', 'z') as $i):
                     }
                 }
                 ?>
-<div id="alphabet-menu" class="btn-group d-flex justify-content-center mb-4">
+<div id="alphabet-menu" class="btn-group d-flex justify-content-center shadow-sm">
     <?php
 foreach (range('a', 'z') as $i):
                     $current = ($i == get_query_var($tax_name_2)) ? "current-menu-item active" : "menu-item";
                     if (in_array($i, $alphabet)) {
-                        printf('<a class="btn btn-outline-secondary ' . $tax_name_2 . ' %s" href="%s">%s</a>', $current, get_term_link($i, $tax_name_2), strtoupper($i));
+                        printf('<a class="btn btn-outline-secondary rounded-0 ' . $tax_name_2 . ' %s" href="%s">%s</a>', $current, get_term_link($i, $tax_name_2), strtoupper($i));
                     } else {
-                        printf('<a class="btn btn-outline-secondary ' . $tax_name_2 . ' %s disabled" tabindex="-1" aria-disabled="true">%s</a>', $current, strtoupper($i));
+                        printf('<a class="btn btn-outline-secondary rounded-0 ' . $tax_name_2 . ' %s disabled" tabindex="-1" aria-disabled="true">%s</a>', $current, strtoupper($i));
                     }
                 endforeach;
                 ?>

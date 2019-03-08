@@ -2,7 +2,7 @@
 
 A Class to create Alphabetical pagination menu on WordPress with Bootstrap.
 
-@version `0.1`
+@version `0.2`
 
 @author [hgodinho](https://github.com/hgodinho)
 
